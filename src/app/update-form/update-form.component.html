@@ -1,0 +1,89 @@
+<form #form="ngForm" (submit)="onSubmit(form)" autocomplete="on">
+  <!-- firstName -->
+  <div class="form-group">
+    <label for="">First Name:</label>
+    <input name="firstName" #firstName="ngModel" [(ngModel)]="service.employee.firstName" class="form-control" required
+      maxlength="50" />
+    <div class="validation-error" *ngIf="firstName.invalid && firstName.touched">
+      <div *ngIf="firstName.errors.required">First name is required.</div>
+      <div *ngIf="firsName.errors.maxlength">
+        First name should be max of
+        {{ firsName.errors.maxlength.requiredLength }}
+      </div>
+    </div>
+  </div>
+  <!-- last name -->
+  <div class="form-group">
+    <label>Last Name:</label>
+    <input name="lastName" #lastName="ngModel" [(ngModel)]="service.employee.lastName" class="form-control" required
+      maxlength="50" />
+    <div class="validation-error" *ngIf="lastName.invalid && lastName.touched">
+      <div *ngIf="lastName.errors.required">Last name is required.</div>
+      <div *ngIf="lastName.errors.maxlength">
+        Last name should be max of
+        {{ lirsName.errors.maxlength.requiredLength }} length.
+      </div>
+    </div>
+  </div>
+  <!-- location -->
+  <div class="form-group">
+    <label>Location:</label>
+    <input name="location" #location="ngModel" [(ngModel)]="service.employee.location" class="form-control" required />
+    <div class="validation-error" *ngIf="location.invalid && location.touched">
+      <div *ngIf="location.errors.required">Location is required.</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label>Email ID:</label>
+    <input name="emailId" #emailId="ngModel" [(ngModel)]="service.employee.emailId" class="form-control" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+      required />
+    <div class="validation-error" *ngIf="emailId.invalid && emailId.touched">
+      <div *ngIf="emailId.errors.required">Email ID is required.</div>
+      <div *ngIf="emailId.errors.pattern">Email Id not valid.</div>
+    </div>
+  </div>
+  <div ngModelGroup="EmployeeSalary">
+    <div class="form-group">
+      <label>Base Salary:</label>
+      <input type="number" name="baseSalary" #baseSalary="ngModel" [(ngModel)]="service.employee.baseSalary" class="form-control"
+        required />
+      <div class="validation-error" *ngIf="baseSalary.invalid && baseSalary.touched">
+        <div *ngIf="baseSalary.errors.required">Base Salary is required.</div>
+        <div>Can only be a number.</div>
+      </div>
+    </div>
+    <label>Deductions(in
+      <i class="fa fa-percent"></i>)</label>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label>401k:</label>
+        <input type="number" name="deduction401" #deduction401="ngModel" [(ngModel)]="service.employee.deduction401"
+          class="form-control" min="0" max="100" />
+        <div class="validation-error" *ngIf="deduction401.invalid && deduction401.touched">
+          <div>Can only be a number between 0 - 100.</div>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label>Medicare:</label>
+        <input name="deductionMedicare" #deductionMedicare="ngModel" [(ngModel)]="service.employee.deductionMedicare"
+          class="form-control" min="0" max="100" />
+        <div class="validation-error" *ngIf="deductionMedicare.invalid && deductionMedicare.touched">
+          <div>Can only be a number between 0 - 100.</div>
+        </div>
+      </div>
+      <div class="form-group col-md-4">
+        <label>Dental:</label>
+        <input name="deductionDental" #deductionDental="ngModel" [(ngModel)]="service.employee.deductionDental" class="form-control"
+          min="0" max="100" />
+        <div class="validation-error" *ngIf="deductionDental.invalid && deductionDental.touched">
+          <div>Can only be a number between 0 - 100.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" [disabled]="form.invalid" class="btn btn-lg btn-block">
+      SUBMIT
+    </button>
+  </div>
+</form>

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row float-right">
+    <div class="col-md-12">
+      <button type="button update" class="btn btn-dark" (click)="onUpdate()">UPDATE</button>
+      &nbsp;
+      <button type="button paycheck" class="btn btn-dark" (click)="onGenerate()">GENERATE PAYCHECK</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Employee Details</h4>
+    </div>
+    <div class="col-md-12">
+      <dl class="row">
+        <dt class="col-sm-3">Name</dt>
+        <dd class="col-sm-9">{{service.employee.firstName +" "+service.employee.lastName}}</dd>
+
+        <dt class="col-sm-3">Email ID</dt>
+        <dd class="col-sm-9">
+          {{ service.employee.emailId}}
+        </dd>
+
+        <dt class="col-sm-3">Location</dt>
+        <dd class="col-sm-9">{{service.employee.location }}</dd>
+
+        <dt class="col-sm-3 text-truncate">Base Salary</dt>
+        <dd class="col-sm-9">{{service.employee.baseSalary | currency}}</dd>
+
+        <dt class="col-sm-3">
+          <h5>Deductions</h5>
+        </dt>
+        <dd class="col-sm-9"></dd>
+
+        <dt class="col-sm-4">401K</dt>
+        <dd class="col-sm-8">{{service.employee.deduction401}} <i class="fa fa-percent" aria-hidden="true"></i></dd>
+
+        <dt class="col-sm-4">Medicare</dt>
+        <dd class="col-sm-8">{{service.employee.deductionMedicare}} <i class="fa fa-percent" aria-hidden="true"></i></dd>
+
+        <dt class="col-sm-4">Dental</dt>
+        <dd class="col-sm-8">{{service.employee.deductionDental}} <i class="fa fa-percent" aria-hidden="true"></i></dd>
+      </dl>
+    </div>
+  </div>
+</div>

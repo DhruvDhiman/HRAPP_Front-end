@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h4>Pay Check</h4>
+    </div>
+    <div class="col-md-6">
+      <dl class="row" *ngIf="paycheck">
+        <dt class="col-sm-3">Name</dt>
+        <dd class="col-sm-9">{{paycheck.firstName +" "+paycheck.lastName}}</dd>
+
+        <dt class="col-sm-3">Date</dt>
+        <dd class="col-sm-9">
+          {{ paycheck.txnDate | date:'shortDate'}}
+        </dd>
+
+        <dt class="col-sm-3">Base Salary</dt>
+        <dd class="col-sm-9">{{paycheck.baseSalary | number}}</dd>
+
+        <dt class="col-sm-3 text-truncate">Federal Tax</dt>
+        <dd class="col-sm-9">{{paycheck.federalTax | number}}</dd>
+
+        <dt class="col-sm-3">
+          <h5>Deductions</h5>
+        </dt>
+        <dd class="col-sm-9"></dd>
+
+        <dt class="col-sm-4">401K</dt>
+        <dd class="col-sm-8">{{paycheck.deduction401 | number}} </dd>
+
+        <dt class="col-sm-4">Medicare</dt>
+        <dd class="col-sm-8">{{paycheck.deductionMedicare | number}} </dd>
+
+        <dt class="col-sm-4">Dental</dt>
+        <dd class="col-sm-8">{{paycheck.deductionDental | number}}</dd>
+
+        <dt class="col-sm-3">
+          <h4>Net Pay</h4>
+        </dt>
+        <dd class="col-sm-9 font-weight-bold">{{paycheck.takeHomSalary | currency}}</dd>
+      </dl>
+
+    </div>
+    <div class="col-md-6">
+      <canvas id="pieChart">
+      </canvas>
+
+    </div>
+  </div>
+</div>
